@@ -1,20 +1,24 @@
 package edu.unimagdalena.coworker.domine.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "member_profiles")
+@Table(name = "tags")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class MemberProfile {
+@AllArgsConstructor
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String phone;
-    private String company;
 
+    private String name;
+
+    @ManyToMany(mappedBy = "tags")
+    private Set<Flight> flights = new HashSet<>();
 }

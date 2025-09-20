@@ -4,19 +4,21 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "members")
+@Table(name = "passengers")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Member {
+public class Passenger {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false, length = 120)
-    private String name;
+
+    @Column(nullable = false, length = 128)
+    private String fullName;
+
     private String email;
     @OneToOne @JoinColumn(name = "profile_id", unique = true)
-    private MemberProfile profile;
+    private PassengerProfile profile;
 
 }

@@ -7,29 +7,30 @@ import java.util.List;
 import lombok.*;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "bookings")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Reservation {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+
     @Column(nullable = false)
     private OffsetDateTime createdAt;
-    @OneToMany(mappedBy = "reservation")
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "passenger_id", nullable = false)
+    private Passenger passenger;
+
+    @OneToMany(mappedBy = "booking")
     @Builder.Default
-    private List<ReservationItem> items = new ArrayList<>();
+    private List<BookingItem> items = new ArrayList<>();
 
-    public void addItem(ReservationItem item){
+    public void addItem(BookingItem item) {
         items.add(item);
-        item.setReservation(this);
+        item.setBooking(this);
     }
-
-
 }
