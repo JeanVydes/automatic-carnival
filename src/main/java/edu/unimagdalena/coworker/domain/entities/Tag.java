@@ -1,4 +1,4 @@
-package edu.unimagdalena.coworker.domine.entities;
+package edu.unimagdalena.coworker.domain.entities;
 
 import java.util.HashSet;
 import java.util.Set;

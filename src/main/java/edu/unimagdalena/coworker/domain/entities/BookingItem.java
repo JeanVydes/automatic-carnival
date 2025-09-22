@@ -1,8 +1,9 @@
-package edu.unimagdalena.coworker.domine.entities;
+package edu.unimagdalena.coworker.domain.entities;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import edu.unimagdalena.coworker.domine.enums.Cabin;
+
+import edu.unimagdalena.coworker.domain.enums.Cabin;
 import lombok.*;
 
 @Entity

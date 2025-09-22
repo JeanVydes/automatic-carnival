@@ -1,4 +1,4 @@
-package edu.unimagdalena.coworker.domine.entities;
+package edu.unimagdalena.coworker.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

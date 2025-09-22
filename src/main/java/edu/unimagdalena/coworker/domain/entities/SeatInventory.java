@@ -1,7 +1,6 @@
-package edu.unimagdalena.coworker.domine.entities;
+package edu.unimagdalena.coworker.domain.entities;
 
-import edu.unimagdalena.coworker.domine.enums.Cabin;
-
+import edu.unimagdalena.coworker.domain.enums.Cabin;
 import jakarta.persistence.*;
 import lombok.*;
 
