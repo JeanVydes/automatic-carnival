@@ -17,12 +17,16 @@ import edu.unimagdalena.coworker.domain.entities.Flight;
 import edu.unimagdalena.coworker.domain.entities.SeatInventory;
 import edu.unimagdalena.coworker.domain.enums.Cabin;
 
-class SeatInventoryRepositoryTest extends AbstractIntegrationTest {
+class TagRepositoryTest extends AbstractIntegrationTest {
 
-    @Autowired private SeatInventoryRepository seatInventoryRepository;
-    @Autowired private FlightRepository flightRepository;
-    @Autowired private AirlineRepository airlineRepository;
-    @Autowired private AirportRepository airportRepository;
+    @Autowired
+    private SeatInventoryRepository seatInventoryRepository;
+    @Autowired
+    private FlightRepository flightRepository;
+    @Autowired
+    private AirlineRepository airlineRepository;
+    @Autowired
+    private AirportRepository airportRepository;
 
     private Flight flight;
 
@@ -44,7 +48,7 @@ class SeatInventoryRepositoryTest extends AbstractIntegrationTest {
         destination.setName("Miami International");
         destination.setCity("Miami");
         airportRepository.save(destination);
-        
+
         flight = new Flight();
         flight.setNumber("LA500");
         flight.setAirline(airline);
@@ -65,8 +69,10 @@ class SeatInventoryRepositoryTest extends AbstractIntegrationTest {
         inventory.setAvailableSeats(150);
         seatInventoryRepository.save(inventory);
 
-        Optional<SeatInventory> foundInventory = seatInventoryRepository.findByFlightIdAndCabin(flight.getId(), Cabin.ECONOMY);
-        Optional<SeatInventory> notFoundInventory = seatInventoryRepository.findByFlightIdAndCabin(flight.getId(), Cabin.BUSINESS);
+        Optional<SeatInventory> foundInventory = seatInventoryRepository.findByFlightIdAndCabin(flight.getId(),
+                Cabin.ECONOMY);
+        Optional<SeatInventory> notFoundInventory = seatInventoryRepository.findByFlightIdAndCabin(flight.getId(),
+                Cabin.BUSINESS);
 
         assertThat(foundInventory).isPresent();
         assertThat(foundInventory.get().getAvailableSeats()).isEqualTo(150);
@@ -86,7 +92,8 @@ class SeatInventoryRepositoryTest extends AbstractIntegrationTest {
         boolean hasEnoughSeats = seatInventoryRepository.existsFlightAvailableSeats(flight.getId(), Cabin.BUSINESS, 10);
         assertThat(hasEnoughSeats).isTrue();
 
-        boolean hasNotEnoughSeats = seatInventoryRepository.existsFlightAvailableSeats(flight.getId(), Cabin.BUSINESS, 25);
+        boolean hasNotEnoughSeats = seatInventoryRepository.existsFlightAvailableSeats(flight.getId(), Cabin.BUSINESS,
+                25);
         assertThat(hasNotEnoughSeats).isFalse();
 
         boolean hasExactSeats = seatInventoryRepository.existsFlightAvailableSeats(flight.getId(), Cabin.BUSINESS, 20);
