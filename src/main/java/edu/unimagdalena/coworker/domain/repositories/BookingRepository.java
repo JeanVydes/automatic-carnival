@@ -1,5 +1,7 @@
 package edu.unimagdalena.coworker.domain.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -11,5 +13,5 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     public Page<Booking> findByPassengerEmailIgnoreCase(String email, Pageable pageable);
 
     @EntityGraph(attributePaths = {"items", "items.flight", "passenger"})
-    public Booking findWithItemsById(Long id);
+    public Optional<Booking> findWithItemsById(Long id);
 }
