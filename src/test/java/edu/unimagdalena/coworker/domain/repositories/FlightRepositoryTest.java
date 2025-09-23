@@ -1,4 +1,4 @@
-package edu.unimagdalena.coworker;
+package edu.unimagdalena.coworker.domain.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import edu.unimagdalena.coworker.AbstractIntegrationTest;
 import edu.unimagdalena.coworker.domain.entities.Airline;
 import edu.unimagdalena.coworker.domain.entities.Airport;
 import edu.unimagdalena.coworker.domain.entities.Flight;
@@ -33,7 +34,6 @@ class FlightRepositoryTest extends AbstractIntegrationTest {
     @Test
     @DisplayName("Should find flights by airline name")
     void whenFindByAirlineName_thenReturnFlights() {
-        // Arrange: Set up only the data needed for this specific test.
         Airline avianca = createAndSaveAirline("Avianca", "AV");
         Airport bogota = createAndSaveAirport("BOG", "El Dorado", "Bogotá");
         Airport madrid = createAndSaveAirport("MAD", "Barajas", "Madrid");
@@ -47,10 +47,8 @@ class FlightRepositoryTest extends AbstractIntegrationTest {
         flight.setArrivalAt(OffsetDateTime.parse("2025-09-22T17:00:00+02:00"));
         flightRepository.save(flight);
 
-        // Act
         List<Flight> foundFlights = flightRepository.findByAirline_Name("Avianca");
 
-        // Assert
         assertThat(foundFlights)
                 .hasSize(1)
                 .extracting(Flight::getNumber)
@@ -60,7 +58,6 @@ class FlightRepositoryTest extends AbstractIntegrationTest {
     @Test
     @DisplayName("Should find paged flights by origin, destination, and time window")
     void whenFindByOriginAndDestinationAndTimeWindow_thenReturnPagedFlights() {
-        // Arrange
         Airline avianca = createAndSaveAirline("Avianca", "AV");
         Airport bogota = createAndSaveAirport("BOG", "El Dorado", "Bogotá");
         Airport madrid = createAndSaveAirport("MAD", "Barajas", "Madrid");
@@ -119,17 +116,13 @@ class FlightRepositoryTest extends AbstractIntegrationTest {
         List<String> requiredTags = List.of("eco", "promo");
         long requiredCount = requiredTags.size();
 
-        // Act
         List<Flight> flights = flightRepository.findByAllTags(requiredTags, requiredCount);
 
-        // Assert
         assertThat(flights)
                 .hasSize(1)
                 .extracting(Flight::getNumber)
                 .containsExactly("AV001");
     }
-
-    // --- Helper methods to reduce code duplication ---
 
     private Airline createAndSaveAirline(String name, String code) {
         Airline airline = new Airline();
