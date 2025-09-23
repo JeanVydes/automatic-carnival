@@ -15,10 +15,6 @@ import edu.unimagdalena.coworker.domain.entities.Airline;
 import edu.unimagdalena.coworker.domain.entities.Airport;
 import edu.unimagdalena.coworker.domain.entities.Flight;
 import edu.unimagdalena.coworker.domain.entities.Tag;
-import edu.unimagdalena.coworker.domain.repositories.AirlineRepository;
-import edu.unimagdalena.coworker.domain.repositories.AirportRepository;
-import edu.unimagdalena.coworker.domain.repositories.FlightRepository;
-import edu.unimagdalena.coworker.domain.repositories.TagRepository;
 
 class FlightRepositoryTest extends AbstractIntegrationTest {
 
