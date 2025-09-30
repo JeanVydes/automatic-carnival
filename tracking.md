@@ -14,6 +14,10 @@ This document tracks the development progress of the project, including branch m
 
 - [add: dto, mappers #1 - https://github.com/JeanVydes/automatic-carnival/pull/1](https://github.com/JeanVydes/automatic-carnival/pull/1)
 
+### September 30
+
+- [add: services & implementations - https://github.com/JeanVydes/automatic-carnival/pull/4](https://github.com/JeanVydes/automatic-carnival/pull/4)
+
 
 ## Authors
 
