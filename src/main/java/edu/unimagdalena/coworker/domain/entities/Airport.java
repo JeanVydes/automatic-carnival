@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

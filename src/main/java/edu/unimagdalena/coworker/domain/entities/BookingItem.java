@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class BookingItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
