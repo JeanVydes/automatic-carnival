@@ -1,7 +1,9 @@
 package edu.unimagdalena.coworker.domain.dto;
 
+import java.io.Serializable;
+
 public class TagDTO {
-    public record CreateTagDTO(String name) {};
-    public record UpdateTagDTO(String name) {};
-    public record TagResponseDTO(Long id, String name) {};
+    public record CreateTagDTO(String name) implements Serializable {}
+    public record UpdateTagDTO(String name) implements Serializable {}
+    public record TagResponseDTO(Long id, String name) implements Serializable {}
 }
